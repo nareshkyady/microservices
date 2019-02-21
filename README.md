@@ -30,16 +30,16 @@ catalogapi - spring boot application
    - http://localhost:5000/catalog/products
    
 # microservices part - 2
-goal v2.0
-achieve a basic microservice implementation in spring boot application 
-    - more details of this, is in goal v1.0
-goal v2.1
-integrate with spring boot actuator and micrometer to send data to prometheus and use grafana to generate graphs.
-why? 
-- Yesterday, i read this in some blog (a microservice must support visibility and transparency, indicators of its own state  and of system state, in a single plan of glass experience. 
-- The dropwizard metrics library is one of the more popular approaches to capturing application metrics (gauges, meters, histograms, and counters). 
-- Spring boot's actuator module provides deep integration with the DropWizard Metrics library, and supports exposing health end points, environment information, endpoint mapping information, request logs, and more. 
-- Time-series databases like Hazelcast, StatsD, Graphite, InfluxDB, and OpenTSDB support the visualization and processing of metrics. DropWizard metrics and SpringBoot actuator can transparently export collected metrics to these time-series databases.)
+- goal v2.0
+  - achieve a basic microservice implementation in spring boot application 
+      more details of this, is in goal v1.0
+- goal v2.1
+  - integrate with spring boot actuator and micrometer to send data to prometheus and use grafana to generate graphs.
+  - why? 
+    - Yesterday, i read this in some blog (a microservice must support visibility and transparency, indicators of its own state  and of system state, in a single plan of glass experience. 
+    - The dropwizard metrics library is one of the more popular approaches to capturing application metrics (gauges, meters, histograms, and counters). 
+    - Spring boot's actuator module provides deep integration with the DropWizard Metrics library, and supports exposing health end points, environment information, endpoint mapping information, request logs, and more. 
+    - Time-series databases like Hazelcast, StatsD, Graphite, InfluxDB, and OpenTSDB support the visualization and processing of metrics. DropWizard metrics and SpringBoot actuator can transparently export collected metrics to these time-series databases.)
 
 technology stack learnt
   - docker basics
