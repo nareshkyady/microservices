@@ -67,13 +67,13 @@ technology stack learnt
   - http://localhost:9090/ (prometheus)
   - http://localhost:9090/targets (check prometheus targets)
   - http://localhost:3000/ (grafana) - 
-    login(admin/admin)
-    add datasource now with details
-      name: catalogapi-prometheus
-      url: http://192.168.1.181:9090
-    add new dashboard
-    add new metrics which pulls from prometheus
-      example: system_cpu_usage
+    - login(admin/admin)
+    - add datasource now with details
+      - name: catalogapi-prometheus
+      - url: http://192.168.1.181:9090
+    - add new dashboard
+    - add new metrics which pulls from prometheus
+      - example: system_cpu_usage
     
 
 
