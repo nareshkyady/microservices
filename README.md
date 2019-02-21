@@ -77,14 +77,14 @@ technology stack learnt
     
 
 
-  notes 
-    micrometer is a dimensional-first metrics collection facade whose aim is to allow you to time, count, and gauge your code with a vendor neutral API. Through classpath and configuration, you may select one or several monitoring systems to export your metrics data to. Think of it like SLF4J, but for metrics!
-    prometheus iss used to record real-time metrics in a time series database (allowing for high dimensionality) built using a HTTP pull model, with flexible queries and real-time alerting.
-  more links related to prometheus
+- notes 
+  - micrometer is a dimensional-first metrics collection facade whose aim is to allow you to time, count, and gauge your code with a vendor neutral API. Through classpath and configuration, you may select one or several monitoring systems to export your metrics data to. Think of it like SLF4J, but for metrics!
+  - prometheus iss used to record real-time metrics in a time series database (allowing for high dimensionality) built using a HTTP pull model, with flexible queries and real-time alerting.
+  - more links related to prometheus
   => https://reflectoring.io/monitoring-spring-boot-with-prometheus/
 
 
-  extras of catalogapi
+- extras of catalogapi
   - in pom.xml, in dependencies, 2 entries below are used to send spring boot application data to prometheus and 
     io.micrometer, org.springframework.boot
     
