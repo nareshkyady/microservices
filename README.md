@@ -109,6 +109,9 @@ steps done at high level
 notes: maven uses dependency-reduced-pom.xml file to create a jar with all dependent libraries) 
 - now login to aws (free tier), do the following
 	- create a new ec2 instance of type t2.micro
+	- create security group with inbound rules for http and ssh ports and outbound rules for all traffic
+	(note: from public dns name of ec2 instance, you can now only access port 80 but spring boot application will run on 5000 port, how will we resolve this? challenge v1.0)
+
 	- login to ec2 instance on ssh
 	- install openjdk on ec2
 		- command > sudo yum install java-1.8.0
@@ -116,11 +119,36 @@ notes: maven uses dependency-reduced-pom.xml file to create a jar with all depen
 		- command > scp -i <xyz.pem> <jar file path>  ec2-user@<public dns name of ec2 instance>:~/
 	- run the jar now 
 		- comment > nohup java -jar profileapi.jar &
-		notes: this application now runs on port 5000 because spring boot application's application.properties has server port as 5000 which tells it to run on 5000
+		(notes: this application now runs on port 5000 because spring boot application's application.properties has server port as 5000 which tells it to run on 5000)
 	- check if the java application is up and running
 		- command > curl -Is http://localhost:5000 | head -1
-		notes: above command should return HTTP/1.1 200 
+		(notes: above command should return HTTP/1.1 200) 
 	- now access the application through public dns url in browser
-		- <public dns name>:5000/profiles in browser
+		(notes: <publicdnsname>:5000/profiles in browser, dont worry if you are unable to access this)
+	- create a domain in aws route 53 (optional)
+		- create a public domain
+		- go to manage dns
+		- go to hosted zone for your domain
+		- create a new record set
+		- create a name for record set
+			- set name as springbootapiv1 which would be sub domain name example: <subdomain>.<domainname>.com.
+			- alias : no
+			- value : <public ip of ec2 instance>
 	
+#challenges 
 
+challenge v1.0 
+- as we enabled only http port on ec2 instance's security grp  we will be able to access spring boot application with public dns name on http port only.
+- so, here we used nginx (reverse proxy service) to forward our requests from http port to 5000 port to our spring boot application
+
+installing nginx
+- login to root (command > sudo -s)
+- install nginx (command > sudo amazon-linux-extras install nginx1.12)
+- change nginx.conf (command > vi /etc/nginx/nginx.conf) to add below code
+	  location / {
+                proxy_pass      http://127.0.0.1:5000;
+          }
+- now check if the syntax is ok (command > nginx -t -c /etc/nginx/nginx.conf)
+- now start nginx service (command > sudo service nginx start)
+(note: cant start nginx if apache http is running on same port)
+- now, all http requests will go to this port 5000. 
