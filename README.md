@@ -49,8 +49,8 @@ technology stack learnt
   
   
   steps to start prometheus and grafana in docker container
-  -> step 1: install docker locally
-  -> step 2: run prometheus locally
+  - step 1: install docker locally
+  - step 2: run prometheus locally
     - docker pull prom/prometheus (pulls docker image)
     - docker run -d --name=prometheus -p 9090:9090 -v <path to prometheus.yml>:/etc/prometheus/prometheus.yml prom/prometheus —config.file=/etc/prometheus/prometheus.yml
     - (note: sample prometheus yml is committed in catalogapi project)
@@ -58,7 +58,7 @@ technology stack learnt
     - docker container ls (lists docker containers, here each container has id, which can be used to stop and remove from container before you run it again)
     - docker stop <id> (stop docker container)
     - docker rm <id> (remove docker container)
-    -> step 3: run grafana locally (on port 3000)
+    - step 3: run grafana locally (on port 3000)
       docker run -d --name=grafana -p 3000:3000 grafana/grafana
 
   check http urls now,
