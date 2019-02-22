@@ -30,7 +30,7 @@ public class TestController {
     private ProductRepository productRepository;
 
     @GetMapping("/catalog/products")
-    public List<Product>  getAllProducts() {	
+    public List<Product>  getAllProducts() {
        return productRepository.findAll();
     }
     @PostMapping("/catalog/products")
