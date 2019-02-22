@@ -90,7 +90,7 @@ technology stack learnt
     
    
 ## microservices part - 3
-goal v3.0
+** goal v3.0 **
 - achieve a basic microservice implementation in spring boot application
 goal v3.1
 - deploy this spring boot application on ec2 instance 
@@ -137,7 +137,7 @@ notes: maven uses dependency-reduced-pom.xml file to create a jar with all depen
 	
 ### challenges 
 
-#### challenge v1.0 
+** challenge v1.0 **
 - as we enabled only http port on ec2 instance's security grp  we will be able to access spring boot application with public dns name on http port only.
 - so, here we used nginx (reverse proxy service) to forward our requests from http port to 5000 port to our spring boot application
 
@@ -145,11 +145,13 @@ installing nginx
 - login to root (command > sudo -s)
 - install nginx (command > sudo amazon-linux-extras install nginx1.12)
 - change nginx.conf (command > vi /etc/nginx/nginx.conf) to add below code
-	  ```
-	  location / {
-                proxy_pass      http://127.0.0.1:5000;
-          }
-	  ```
+```
+location / {
+```
+   proxy_pass      http://127.0.0.1:5000;
+```
+}
+```
 - now check if the syntax is ok (command > nginx -t -c /etc/nginx/nginx.conf)
 - now start nginx service (command > sudo service nginx start)
 (note: cant start nginx if apache http is running on same port)
