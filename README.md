@@ -1,6 +1,6 @@
 
 ## microservices part - 1
-goal v1.0: achieve a basic microservice implementation in spring boot application
+*goal v1.0: achieve a basic microservice implementation in spring boot application*
 
 catalogapi - spring boot application
   what is it?
@@ -31,24 +31,24 @@ catalogapi - spring boot application
    
 ## microservices part - 2
 - goal v2.0
-  - achieve a basic microservice implementation in spring boot application 
+  - achieve a basic microservice implementation in spring boot application
       more details of this, is in goal v1.0
-- goal v2.1
-  - integrate with spring boot actuator and micrometer to send data to prometheus and use grafana to generate graphs.
+- *goal v2.1
+  - integrate with spring boot actuator and micrometer to send data to prometheus and use grafana to generate graphs*
   - why? 
     - Yesterday, i read this in some blog (a microservice must support visibility and transparency, indicators of its own state  and of system state, in a single plan of glass experience. 
     - The dropwizard metrics library is one of the more popular approaches to capturing application metrics (gauges, meters, histograms, and counters). 
     - Spring boot's actuator module provides deep integration with the DropWizard Metrics library, and supports exposing health end points, environment information, endpoint mapping information, request logs, and more. 
     - Time-series databases like Hazelcast, StatsD, Graphite, InfluxDB, and OpenTSDB support the visualization and processing of metrics. DropWizard metrics and SpringBoot actuator can transparently export collected metrics to these time-series databases.)
 
-technology stack learnt
+*technology stack learnt*
   - docker basics
   - prometheus
   - grafana
   - spring actuator and micrometer
   
   
-  steps to start prometheus and grafana in docker container
+  *steps to start prometheus and grafana in docker container*
   - step 1: install docker locally
   - step 2: run prometheus locally
     - docker pull prom/prometheus (pulls docker image)
@@ -77,7 +77,7 @@ technology stack learnt
     
 
 
-- notes 
+*notes* 
   - micrometer is a dimensional-first metrics collection facade whose aim is to allow you to time, count, and gauge your code with a vendor neutral API. Through classpath and configuration, you may select one or several monitoring systems to export your metrics data to. Think of it like SLF4J, but for metrics!
   - prometheus iss used to record real-time metrics in a time series database (allowing for high dimensionality) built using a HTTP pull model, with flexible queries and real-time alerting.
   - more links related to prometheus
@@ -90,9 +90,9 @@ technology stack learnt
     
    
 ## microservices part - 3
-** goal v3.0 **
+*goal v3.0*
 - achieve a basic microservice implementation in spring boot application
-goal v3.1
+*goal v3.1*
 - deploy this spring boot application on ec2 instance 
 - access the application on internet
 
@@ -137,7 +137,7 @@ notes: maven uses dependency-reduced-pom.xml file to create a jar with all depen
 	
 ### challenges 
 
-** challenge v1.0 **
+**challenge v1.0**
 - as we enabled only http port on ec2 instance's security grp  we will be able to access spring boot application with public dns name on http port only.
 - so, here we used nginx (reverse proxy service) to forward our requests from http port to 5000 port to our spring boot application
 
@@ -148,7 +148,9 @@ installing nginx
 ```
 location / {
 ```
+```
    proxy_pass      http://127.0.0.1:5000;
+```
 ```
 }
 ```
