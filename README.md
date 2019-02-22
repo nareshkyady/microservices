@@ -49,16 +49,16 @@ technology stack learnt
   
   
   steps to start prometheus and grafana in docker container
-  - step 1: install docker locally
-  - step 2: run prometheus locally
-    docker pull prom/prometheus (pulls docker image)
-    docker run -d --name=prometheus -p 9090:9090 -v <path to prometheus.yml>:/etc/prometheus/prometheus.yml prom/prometheus —config.file=/etc/prometheus/prometheus.yml
-  (note: sample prometheus yml is committed in catalogapi project)
-  (runs docker image on port 9090)
-    docker container ls (lists docker containers, here each container has id, which can be used to stop and remove from container before you run it again)
-    docker stop <id> (stop docker container)
-    docker rm <id> (remove docker container)
-    - step 3: run grafana locally (on port 3000)
+  -> step 1: install docker locally
+  -> step 2: run prometheus locally
+    - docker pull prom/prometheus (pulls docker image)
+    - docker run -d --name=prometheus -p 9090:9090 -v <path to prometheus.yml>:/etc/prometheus/prometheus.yml prom/prometheus —config.file=/etc/prometheus/prometheus.yml
+    - (note: sample prometheus yml is committed in catalogapi project)
+      (runs docker image on port 9090)
+    - docker container ls (lists docker containers, here each container has id, which can be used to stop and remove from container before you run it again)
+    - docker stop <id> (stop docker container)
+    - docker rm <id> (remove docker container)
+    -> step 3: run grafana locally (on port 3000)
       docker run -d --name=grafana -p 3000:3000 grafana/grafana
 
   check http urls now,
@@ -89,3 +89,38 @@ technology stack learnt
     io.micrometer, org.springframework.boot
     
    
+#microservices part - 3
+goal v3.0
+- achieve a basic microservice implementation in spring boot application
+goal v3.1
+- deploy this spring boot application on ec2 instance 
+- access the application on internet
+
+technology stack
+- aws ec2
+- aws iam
+- nginx 
+- aws route 53
+
+
+steps done at high level
+- project, profileapi achieves us goal v3.0 exposing REST services at http://localhost:5000/profiles
+- create a jar of this profile api through maven, command > maven package
+notes: maven uses dependency-reduced-pom.xml file to create a jar with all dependent libraries) 
+- now login to aws (free tier), do the following
+	- create a new ec2 instance of type t2.micro
+	- login to ec2 instance on ssh
+	- install openjdk on ec2
+		- command > sudo yum install java-1.8.0
+	- copy the profile api jar created to ec2 instance
+		- command > scp -i <xyz.pem> <jar file path>  ec2-user@<public dns name of ec2 instance>:~/
+	- run the jar now 
+		- comment > nohup java -jar profileapi.jar &
+		notes: this application now runs on port 5000 because spring boot application's application.properties has server port as 5000 which tells it to run on 5000
+	- check if the java application is up and running
+		- command > curl -Is http://localhost:5000 | head -1
+		notes: above command should return HTTP/1.1 200 
+	- now access the application through public dns url in browser
+		- <public dns name>:5000/profiles in browser
+	
+
