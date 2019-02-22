@@ -145,9 +145,9 @@ installing nginx
 - login to root (command > sudo -s)
 - install nginx (command > sudo amazon-linux-extras install nginx1.12)
 - change nginx.conf (command > vi /etc/nginx/nginx.conf) to add below code
-	  location / {
+	  [location / {
                 proxy_pass      http://127.0.0.1:5000;
-          }
+          }]
 - now check if the syntax is ok (command > nginx -t -c /etc/nginx/nginx.conf)
 - now start nginx service (command > sudo service nginx start)
 (note: cant start nginx if apache http is running on same port)
