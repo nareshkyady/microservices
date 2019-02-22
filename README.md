@@ -116,7 +116,7 @@ notes: maven uses dependency-reduced-pom.xml file to create a jar with all depen
 	- install openjdk on ec2
 		- command > sudo yum install java-1.8.0
 	- copy the profile api jar created to ec2 instance
-		- command > scp -i <xyz.pem> <jar file path>  ec2-user@<public dns name of ec2 instance>:~/
+		- command > scp -i <xyz.pem> <jar file path>  ec2-user@<publicdnsnameofec2instance>:~/
 	- run the jar now 
 		- comment > nohup java -jar profileapi.jar &
 		(notes: this application now runs on port 5000 because spring boot application's application.properties has server port as 5000 which tells it to run on 5000)
@@ -133,7 +133,7 @@ notes: maven uses dependency-reduced-pom.xml file to create a jar with all depen
 		- create a name for record set
 			- set name as springbootapiv1 which would be sub domain name example: <subdomain>.<domainname>.com.
 			- alias : no
-			- value : <public ip of ec2 instance>
+			- value : <publicipofec2instance>
 	
 #challenges 
 
