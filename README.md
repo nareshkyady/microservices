@@ -124,7 +124,7 @@ notes: maven uses dependency-reduced-pom.xml file to create a jar with all depen
 		- command > curl -Is http://localhost:5000 | head -1
 		(notes: above command should return HTTP/1.1 200) 
 	- now access the application through public dns url in browser
-		(notes: <publicdnsname>:5000/profiles in browser, dont worry if you are unable to access this)
+		(notes: *publicdnsname*:5000/profiles in browser, dont worry if you are unable to access this)
 	- create a domain in aws route 53 (optional)
 		- create a public domain
 		- go to manage dns
@@ -133,7 +133,7 @@ notes: maven uses dependency-reduced-pom.xml file to create a jar with all depen
 		- create a name for record set
 			- set name as springbootapiv1 which would be sub domain name example: <subdomain>.<domainname>.com.
 			- alias : no
-			- value : <publicipofec2instance>
+			- value : *publicipofec2instance*
 	
 ### challenges 
 
